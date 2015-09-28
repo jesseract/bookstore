@@ -22,9 +22,9 @@ Then(/^I am redirected to the book index page$/) do
 end
 
 When(/^I enter the wrong password$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in :user_password, with: 'passwrord'
 end
 
 Then(/^I am notified that my password is incorrect$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Invalid email or password."
 end
