@@ -1,10 +1,17 @@
 default: &default
   adapter: postgresql
-  user: jess
+  user:
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-test:
+  database: bookstore_development
+
+test: &test
   <<: *default
+  database: bookstore_test
+
+cucumber:
+  <<: *test
+  database: bookstore_cucumber

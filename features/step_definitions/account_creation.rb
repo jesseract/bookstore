@@ -3,15 +3,19 @@ Given(/^I do not have an account on the site$/) do
 end
 
 When(/^I visit the site root path$/) do
-  pending # express the regexp above with the code you wish you had
+  visit '/'
 end
 
 Then(/^I am presented with a login page$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Log in"
 end
 
 When(/^I click "(.*?)"$/) do |arg1|
   pending # express the regexp above with the code you wish you had
+end
+
+When(/^I click the button "(.*?)"$/) do |arg1|
+  click_button arg1
 end
 
 When(/^I enter my email address$/) do
@@ -19,10 +23,6 @@ When(/^I enter my email address$/) do
 end
 
 When(/^I enter a password with correct confirmation$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I click submit$/) do
   pending # express the regexp above with the code you wish you had
 end
 
