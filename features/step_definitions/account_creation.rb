@@ -1,5 +1,5 @@
 Given(/^I do not have an account on the site$/) do
-  pending # express the regexp above with the code you wish you had
+  User.delete_all
 end
 
 When(/^I visit the site root path$/) do
