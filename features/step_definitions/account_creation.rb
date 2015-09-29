@@ -1,5 +1,5 @@
 Given(/^I do not have an account on the site$/) do
-  User.delete_all
+  user = User.delete_all
 end
 
 When(/^I visit the site root path$/) do
@@ -11,23 +11,24 @@ Then(/^I am presented with a login page$/) do
 end
 
 When(/^I click "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+ click_link('Sign up') 
 end
 
-When(/^I click the button "(.*?)"$/) do |arg1|
+When(/^I click the "(.*?)" button$/) do |arg1|
   click_button arg1
 end
 
 When(/^I enter my email address$/) do
-  pending # express the regexp above with the code you wish you had
+ fill_in :user_email, with: 'test@example.com' 
 end
 
 When(/^I enter a password with correct confirmation$/) do
-  pending # express the regexp above with the code you wish you had
+ fill_in :user_password, with: "password" 
+ fill_in :user_password_confirmation, with: "password"  
 end
 
 Then(/^I am told to check my email for a confirmation link$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Check your email for a confirmation link." 
 end
 
 Then(/^I am sent a confirmation email$/) do

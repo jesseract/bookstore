@@ -6,8 +6,8 @@ Feature: User Account Creation
     When I click "Sign up"
     And I enter my email address
     And I enter a password with correct confirmation
-    And I click the button "submit"
-    Then I am told to check my email for a confirmation link
+    And I click the "Sign up" button
+    Then I am told to sign in or sign up before continuing
     And I am sent a confirmation email
     When I visit the link in that email
     Then My email address becomes confirmed
