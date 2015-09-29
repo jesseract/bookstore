@@ -28,15 +28,19 @@ When(/^I enter a password with correct confirmation$/) do
 end
 
 Then(/^I am told to check my email for a confirmation link$/) do
-  expect(page).to have_content "Check your email for a confirmation link." 
+  expect(page).to have_content "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account" 
 end
 
 Then(/^I am sent a confirmation email$/) do
-  pending # express the regexp above with the code you wish you had
+  email = ActionMailer::Base.deliveries.first
+  expect(email.from).to eq(["no-reply@smashingboxes.com"])
+  expect(email.to).to eq(["test@example.com"])
+  expect(email.body).to have_content("confirm your account") 
 end
 
 When(/^I visit the link in that email$/) do
-  pending # express the regexp above with the code you wish you had
+  open_last_email_for("test@example.com")
+  visit_in_email("Confirm my account") 
 end
 
 Then(/^My email address becomes confirmed$/) do

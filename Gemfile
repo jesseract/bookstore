@@ -12,6 +12,7 @@ gem 'devise'
 group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
+  gem 'actionmailer'
 end
 
 group :test do
