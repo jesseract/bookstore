@@ -205,7 +205,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionmailer
   coffee-rails (~> 4.1.0)
   cucumber-rails
   database_cleaner

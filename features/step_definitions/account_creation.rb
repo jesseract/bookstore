@@ -1,5 +1,5 @@
 Given(/^I do not have an account on the site$/) do
-  user = User.delete_all
+  User.delete_all
 end
 
 When(/^I visit the site root path$/) do
@@ -10,12 +10,8 @@ Then(/^I am presented with a login page$/) do
   expect(page).to have_content "Log in"
 end
 
-When(/^I click the "(.*?)" link$/) do |arg1|
-  click_link arg1 
-end
-
-When(/^I click the "(.*?)" button$/) do |arg1|
-  click_button arg1
+When(/^I click the "(.*?)" (?:link|button)$/) do |target|
+  click_on target
 end
 
 When(/^I enter my email address$/) do
@@ -53,11 +49,11 @@ When(/^I enter a password with incorrect confirmation$/) do
 end
 
 Then(/^I am notified that my password confirmation does not match$/) do
-  expect(page).to have_content "Sign up 1 error prohibited this user from being saved: Password confirmation doesn't match"
+  expect(page).to have_content "Password confirmation doesn't match"
 end
 
-When(/^I enter "(.*?)" as my email address$/) do |arg1|
-  fill_in :user_email, with: "garbage" 
+When(/^I enter "(.*?)" as my email address$/) do |email|
+  fill_in :user_email, with: email 
 end
 
 When(/^I enter a password with correct password confirmation$/) do
@@ -66,5 +62,5 @@ When(/^I enter a password with correct password confirmation$/) do
 end
 
 Then(/^I am notified that my email address is invalid\.$/) do
-  expect(page).to have_content "Sign up 1 error prohibited this user from being saved: Email is invalid" 
+  expect(page).to have_content "Email is invalid" 
 end
