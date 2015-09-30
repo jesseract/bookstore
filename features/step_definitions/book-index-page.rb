@@ -1,5 +1,5 @@
 Given(/^there are (\d+) books in the database$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+    expect(books).to eq 100
 end
 
 When(/^I visit the root url$/) do
