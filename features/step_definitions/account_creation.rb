@@ -10,8 +10,8 @@ Then(/^I am presented with a login page$/) do
   expect(page).to have_content "Log in"
 end
 
-When(/^I click "(.*?)"$/) do |arg1|
- click_link('Sign up') 
+When(/^I click the "(.*?)" link$/) do |arg1|
+  click_link arg1 
 end
 
 When(/^I click the "(.*?)" button$/) do |arg1|
@@ -44,25 +44,27 @@ When(/^I visit the link in that email$/) do
 end
 
 Then(/^My email address becomes confirmed$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Your email address has been successfully confirmed"
 end
 
 When(/^I enter a password with incorrect confirmation$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in :user_password, with: "password"
+  fill_in :user_password_confirmation, with: "passowrd" 
 end
 
 Then(/^I am notified that my password confirmation does not match$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Sign up 1 error prohibited this user from being saved: Password confirmation doesn't match"
 end
 
 When(/^I enter "(.*?)" as my email address$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  fill_in :user_email, with: "garbage" 
 end
 
 When(/^I enter a password with correct password confirmation$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in :user_password, with: "password"
+  fill_in :user_password_confirmation, with: "password" 
 end
 
 Then(/^I am notified that my email address is invalid\.$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Sign up 1 error prohibited this user from being saved: Email is invalid" 
 end
