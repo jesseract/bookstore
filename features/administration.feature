@@ -4,7 +4,7 @@ Feature: Bookstore Administration Panel
     When I visit the admin panel url
     And I enter my admin email
     And I enter my admin password
-    And I click submit
+    And I click the "Login" button
     Then I see the admin panel
 
   Scenario: Invalid Login
@@ -12,7 +12,7 @@ Feature: Bookstore Administration Panel
     When I visit the admin panel url
     And I enter my admin email
     And I enter my admin password
-    And I click submit
+    And I click the "Login" button
     Then I see a flash notification that tell me that my email does not exist in the system
 
   Scenario: Adding a book

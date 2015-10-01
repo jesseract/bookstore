@@ -4,19 +4,19 @@ Given(/^I have an admin account$/) do
 end
 
 When(/^I visit the admin panel url$/) do
-  pending # express the regexp above with the code you wish you had
+  visit("/admin") 
 end
 
 When(/^I enter my admin email$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in :admin_user_email, with: "admin@example.com" 
 end
 
 When(/^I enter my admin password$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in :admin_user_password, with: "password" 
 end
 
 Then(/^I see the admin panel$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Signed in successfully" 
 end
 
 Given(/^I do not have an admin account$/) do
