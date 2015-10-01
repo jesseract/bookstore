@@ -1,5 +1,6 @@
 Given(/^I have an admin account$/) do
-  pending # express the regexp above with the code you wish you had
+ @admin = AdminUser.create(email: "admin@example.com", password: "password", 
+    password_confirmation: "password")
 end
 
 When(/^I visit the admin panel url$/) do
