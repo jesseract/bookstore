@@ -48,23 +48,23 @@ When(/^I visit the admin books url$/) do
 end
 
 When(/^I enter the title "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  fill_in :book_title, with: "Test Book" 
 end
 
 When(/^I enter the price "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  fill_in :book_price_cents, with: "135.99" 
 end
 
 When(/^I enter the published date "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  select_date "2015,August,10", :from => "Published date"
 end
 
 When(/^I enter the author "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  fill_in :book_author, with: "Some Person" 
 end
 
 Then(/^I see the book "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+   expect(page).to have_content "Test Book"
 end
 
 When(/^I visit the public book index$/) do

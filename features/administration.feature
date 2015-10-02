@@ -24,7 +24,7 @@ Feature: Bookstore Administration Panel
     And I enter the price "135.99"
     And I enter the published date "2015-08-10"
     And I enter the author "Some Person"
-    And I click the "Submit" button
+    And I click the "Create Book" button
     And I visit the admin books url
     Then I see the book "Test Book"
     When I visit the public book index

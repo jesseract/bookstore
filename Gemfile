@@ -13,6 +13,7 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
+  gem 'selenium-webdriver', '~> 2.47.1'
 end
 
 group :test do
