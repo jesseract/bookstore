@@ -20,23 +20,31 @@ Then(/^I see the admin panel$/) do
 end
 
 Given(/^I do not have an admin account$/) do
-  pending # express the regexp above with the code you wish you had
+  AdminUser.delete_all
 end
 
 Then(/^I see a flash notification that tell me that my email does not exist in the system$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Invalid email or password" 
 end
 
 Given(/^I am logged into the admin panel$/) do
-  pending # express the regexp above with the code you wish you had
+  @admin = AdminUser.create(email: "admin@example.com", password: "password", password_confirmation: "password")
+  visit("/admin")
+  fill_in :admin_user_email, with: "admin@example.com"
+  fill_in :admin_user_password, with: "password"
+  click_button("Login") 
 end
 
 Given(/^I am logged into the site$/) do
-  pending # express the regexp above with the code you wish you had
+  @user = User.new(email: "test@example.com", password: "password", password_confirmation: "password")
+  visit("/")
+  fill_in :user_email, with: "test@example.com"
+  fill_in :user_password, with: "password"
+  click_button("Log in")
 end
 
 When(/^I visit the admin books url$/) do
-  pending # express the regexp above with the code you wish you had
+  visit("/admin/books") 
 end
 
 When(/^I enter the title "(.*?)"$/) do |arg1|
