@@ -38,7 +38,7 @@ Feature: Bookstore Administration Panel
     And I am logged into the site
     And there is a book named "Book To Be Deleted"
     When I visit the admin books url
-    And I click the "Delete" button for the book "Book To Be Deleted"
+    And I delete the Book with the Title "Book To Be Deleted"
     Then I see a prompt requesting that I confirm my decision to delete the book
     When I confirm my decision to delete the book
     Then I don't see "Book To Be Deleted"

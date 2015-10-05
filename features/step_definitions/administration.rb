@@ -72,12 +72,22 @@ Then(/^I see the book author "(.*?)"$/) do |arg1|
 end
 
 Given(/^there is a book named "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  book = Book.create(title: "Book To Be Deleted") 
+end
+
+When(/^I delete the Book with the Title "(.*?)"$/) do |title|
+  find('tr', text: title).click_link("Delete")
 end
 
 Then(/^I see a prompt requesting that I confirm my decision to delete the book$/) do
-  pending # express the regexp above with the code you wish you had
+  visit(user_path(user))
+  expect(page).to have_selector "a[data-confirm='Are you sure?'][href='#{user_path(user)}']", text: 'OK'
 end
+  # message = accept_prompt(with: 'OK') do
+  #   click_link('Delete')
+  # end
+  # expect(message).to eq("Are you sure you want to delete this book?")
+# end
 
 When(/^I confirm my decision to delete the book$/) do
   pending # express the regexp above with the code you wish you had
