@@ -3,6 +3,16 @@ Given(/^I have an account on the site$/) do
   expect(user).to be_valid
 end
 
+Given(/^I am logged into the site$/) do
+  step "I have an account on the site"
+  step "My account is confirmed"
+  step "I visit the site root path"
+  step "I enter my correct email"
+  step "I enter my password"
+  step "I click the \"Log in\" button"
+
+end
+
 Given(/^My account is confirmed$/) do
   user = User.where(email: "test@example.com").first
   user.confirm
@@ -18,7 +28,7 @@ When(/^I enter my password$/) do
 end
 
 Then(/^I am redirected to the book index page$/) do
-  expect(page).to have_content "Welcome to the bookstore test@example.com"
+  expect(page).to have_content "Signed in successfully"
 end
 
 When(/^I enter the wrong password$/) do

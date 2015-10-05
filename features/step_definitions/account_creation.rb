@@ -10,10 +10,6 @@ Then(/^I am presented with a login page$/) do
   expect(page).to have_content "Log in"
 end
 
-When(/^I click the "(.*?)" (?:link|button)$/) do |target|
-  click_on target
-end
-
 When(/^I enter my email address$/) do
  fill_in :user_email, with: 'test@example.com' 
 end

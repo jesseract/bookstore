@@ -35,20 +35,12 @@ Given(/^I am logged into the admin panel$/) do
   click_button("Login") 
 end
 
-Given(/^I am logged into the site$/) do
-  @user = User.new(email: "test@example.com", password: "password", password_confirmation: "password")
-  visit("/")
-  fill_in :user_email, with: "test@example.com"
-  fill_in :user_password, with: "password"
-  click_button("Log in")
-end
-
 When(/^I visit the admin books url$/) do
   visit("/admin/books") 
 end
 
 When(/^I enter the title "(.*?)"$/) do |arg1|
-  fill_in :book_title, with: "Test Book" 
+  fill_in :book_title, with: arg1 
 end
 
 When(/^I enter the price "(.*?)"$/) do |arg1|
@@ -64,19 +56,19 @@ When(/^I enter the author "(.*?)"$/) do |arg1|
 end
 
 Then(/^I see the book "(.*?)"$/) do |arg1|
-   expect(page).to have_content "Test Book"
+   expect(page).to have_content(arg1)
 end
 
 When(/^I visit the public book index$/) do
-  pending # express the regexp above with the code you wish you had
+  visit("/") 
 end
 
 Then(/^I see the book published date "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "2015-08-10" 
 end
 
 Then(/^I see the book author "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content "Some Person" 
 end
 
 Given(/^there is a book named "(.*?)"$/) do |arg1|
