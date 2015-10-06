@@ -43,8 +43,8 @@ When(/^I enter the title "(.*?)"$/) do |arg1|
   fill_in :book_title, with: arg1 
 end
 
-When(/^I enter the price "(.*?)"$/) do |arg1|
-  fill_in :book_price_cents, with: "135.99" 
+When(/^I enter the price "(.*?)"$/) do |price_cents|
+  fill_in :book_price_cents, with: price_cents 
 end
 
 When(/^I enter the published date "(.*?)"$/) do |arg1|
@@ -55,8 +55,8 @@ When(/^I enter the author "(.*?)"$/) do |arg1|
   fill_in :book_author, with: "Some Person" 
 end
 
-Then(/^I see the book "(.*?)"$/) do |arg1|
-   expect(page).to have_content(arg1)
+Then(/^I see the book "(.*?)"$/) do |title|
+   expect(page).to have_content(title)
 end
 
 When(/^I visit the public book index$/) do
@@ -67,12 +67,16 @@ Then(/^I see the book published date "(.*?)"$/) do |arg1|
   expect(page).to have_content "2015-08-10" 
 end
 
-Then(/^I see the book author "(.*?)"$/) do |arg1|
+Then(/^I see the book author "(.*?)"$/) do |author|
   expect(page).to have_content "Some Person" 
 end
 
-Given(/^there is a book named "(.*?)"$/) do |arg1|
-  book = Book.create(title: "Book To Be Deleted") 
+Given(/^there is a book named "(.*?)"$/) do |title|
+  @book = Book.create(title: title ) 
+end
+
+Given(/^the price of the book is "(.*?)"$/) do |price_cents|
+  @book.price_cents = price_cents 
 end
 
 When(/^I delete the Book with the Title "(.*?)"$/) do |title|
@@ -93,14 +97,14 @@ Then(/^I don't see "(.*?)"$/) do |arg1|
   expect(page).not_to have_content("Book To Be Deleted") 
 end
 
-Given(/^there is a book named "(.*?)" valued at "(.*?)"$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+When(/^I edit the book with the title "(.*?)"$/) do |title|
+  find('tr', text: title).click_link("Edit")
 end
 
-When(/^I change the book name to "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I change the book name to "(.*?)"$/) do |title|
+  fill_in "Title", with: title 
 end
 
-When(/^I change the book price to "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I change the book price to "(.*?)"$/) do |price_cents|
+  fill_in "Price cents", with: price_cents 
 end
