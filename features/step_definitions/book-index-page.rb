@@ -1,18 +1,7 @@
-Before do 
-  @book = create(:title, :published_on, :author, :price)
-  visit("/users/sign_in")
-  fill_in :user_email, with: 'test@example.com'  
-  fill_in :user_password, with: "password" 
-  fill_in :user_password_confirmation, with: "password"
-  click_button("Sign up")
-  open_email("test@example.com")
-  visit_in_email("Confirm my account")
-end  
-  
 
-Given(/^there are (\d+) books in the database$/) do |arg1|
-    expect(books).to eq 100
-end
+Given(/^there are (\d+) books in the database$/) do |amount|
+  amount.to_i.times { create(:book) }
+end 
 
 When(/^I visit the root url$/) do
   pending # express the regexp above with the code you wish you had
