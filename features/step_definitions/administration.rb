@@ -39,19 +39,19 @@ When(/^I visit the admin books url$/) do
   visit("/admin/books") 
 end
 
-When(/^I enter the title "(.*?)"$/) do |arg1|
-  fill_in :book_title, with: arg1 
+When(/^I enter the title "(.*?)"$/) do |title|
+  fill_in :book_title, with: title 
 end
 
 When(/^I enter the price "(.*?)"$/) do |price_cents|
-  fill_in :book_price_cents, with: price_cents 
+  fill_in :book_price_cents, with: price_cents * 100
 end
 
-When(/^I enter the published date "(.*?)"$/) do |arg1|
+When(/^I enter the published date "(.*?)"$/) do |date|
   select_date "2015,August,10", :from => "Published date"
 end
 
-When(/^I enter the author "(.*?)"$/) do |arg1|
+When(/^I enter the author "(.*?)"$/) do |author|
   fill_in :book_author, with: "Some Person" 
 end
 

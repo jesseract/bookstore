@@ -3,7 +3,7 @@ ActiveAdmin.register Book do
 
   config.clear_action_items!
 
-  action_item :create, :only => :index do
+  action_item :create, only: :index do
       link_to "Add a Book" , "/admin/books/new"
   end
 end
