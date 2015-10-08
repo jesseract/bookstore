@@ -8,6 +8,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'devise'
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'money-rails'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -18,6 +20,8 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'email_spec'
+  gem 'capybara-screenshot'
+  gem 'capybara-webkit'
 end
 
 group :development do

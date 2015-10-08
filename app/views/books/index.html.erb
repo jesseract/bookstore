@@ -1,1 +1,24 @@
-<h1> Welcome to the bookstore <%= current_user.email %></h1>
+<h1>Bookstore</h1>
+<p>
+  <%= form_tag(root_path, method: :get) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  <% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Published Date</th>
+      <th>Price</th>
+    </tr>
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.author %></td>
+      <td><%= book.published_date %></td>
+      <td><%= book.price_cents %></td>
+    </tr>
+    <% end %>
+</table>
+
