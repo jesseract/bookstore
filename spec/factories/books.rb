@@ -7,8 +7,6 @@ FactoryGirl.define do
     title "That Book"
     published_date { dates.sample }
     author "That Girl"
-    price_cents { price.sample }
-    price_currency "USD"
-    times_purchased { purchased.sample }
+    price { Money.new(price.sample) }
   end
 end
