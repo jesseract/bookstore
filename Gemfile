@@ -9,6 +9,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'kaminari'
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'money-rails'
+
 
 group :development, :test do
   gem 'pry-byebug'
@@ -18,6 +21,9 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'capybara-screenshot'
+  gem 'capybara-webkit'
 end
 
 group :development do
