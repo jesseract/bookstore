@@ -1,5 +1,4 @@
 
-
 Given(/^there are (\d+) books in the database$/) do |amount|
   amount.to_i.times { create(:book) }
 end 
