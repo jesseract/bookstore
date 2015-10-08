@@ -4,9 +4,13 @@ FactoryGirl.define do
   purchased = [0,1,2,3,4,5,6,7]
 
   factory :book do
-    title "That Book"
-    published_date { dates.sample }
-    author "That Girl"
+    sequence :title do |n| 
+      "Test Book #{n}" 
+    end
+    sequence :published_date do |n|
+      Faker::Date.backward(n)
+    end
+    author "Jessa Pearce"
     price { Money.new(price.sample) }
   end
 end

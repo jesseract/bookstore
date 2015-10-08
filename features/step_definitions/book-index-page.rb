@@ -4,15 +4,15 @@ Given(/^there are (\d+) books in the database$/) do |amount|
 end 
 
 When(/^I visit the root url$/) do
-  pending # express the regexp above with the code you wish you had
+  visit('/') 
 end
 
 Then(/^I see a list of books in the database$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content(Book.first.title) 
 end
 
 Then(/^the books are ordered by published date$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content(Book.first.published_date) 
 end
 
 Then(/^the list of (\d+) books are paginated in pages of (\d+) books per page$/) do |arg1, arg2|
