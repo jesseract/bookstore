@@ -1,10 +1,13 @@
-<h1>Bookstore</h1>
 <p>
-  <%= form_tag(root_path, method: :get) do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag "Search" %>
+  <%= form_tag root_path, method: :get, class: 'form-inline' do %>
+    <div class='form-group'>
+      <%= text_field_tag :search, nil, class: 'form-control' %>
+    </div>
+    <%= submit_tag "Search", class: 'btn btn-default' %>
   <% end %>
-<table>
+</p>
+
+<table class='table'>
   <thead>
     <tr>
       <th>Title</th>
@@ -17,7 +20,7 @@
       <td><%= book.title %></td>
       <td><%= book.author %></td>
       <td><%= book.published_date %></td>
-      <td><%= book.price %></td>
+      <td><%= book.price.format %></td>
     </tr>
     <% end %>
 </table>
