@@ -1,7 +1,7 @@
 100.times do
   Book.create!(
     title: Faker::Book.title,
-    author: Faker::Book.author,
+    author: Faker::Name.name,
     published_date: Time.zone.today,
     price: Money.new([2500, 1900, 2300, 1000, 750].sample),
   )

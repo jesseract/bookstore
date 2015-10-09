@@ -7,10 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class='container'>
+    <header>
+      <h1>Jessa's Bookstore</h1>
+    </header>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<%= yield %>
+    <div class='flash'>
+      <% flash.each do |message_type, messages| %>
+        <div class='alert alert-<%= bootstrap_alert_message_class_for(message_type) %>'>
+          <ul class='<%= message_type %>'>
+            <% [messages].flatten.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
 
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </div>
 </body>
 </html>
