@@ -15,8 +15,8 @@ Then(/^the books are ordered by published date$/) do
   expect(page).to have_content(Book.first.published_date) 
 end
 
-Then(/^the list of (\d+) books are paginated in pages of (\d+) books per page$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Then(/^the list of (\d+) books are paginated in pages of (\d+) books per page$/) do |total, per_page|
+  expect(page).to have_selector("tr", count: per_page.to_i + 1)  
 end
 
 Given(/^some books have been ordered$/) do
