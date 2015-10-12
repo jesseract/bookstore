@@ -20,15 +20,15 @@ Then(/^the list of (\d+) books are paginated in pages of (\d+) books per page$/)
 end
 
 Given(/^some books have been ordered$/) do
-  pending # express the regexp above with the code you wish you had
+  create(:book, times_purchased: 1000) 
 end
 
-When(/^I sort by "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I sort by "(.*?)"$/) do |sort_by|
+  click_link("Sort by #{sort_by}") 
 end
 
 Then(/^the books are re\-sorted based on the amount of times they are purchased$/) do
-  pending # express the regexp above with the code you wish you had
+   expect(page).to have_content(1000) 
 end
 
 When(/^I enter a book's title into the book search field$/) do
