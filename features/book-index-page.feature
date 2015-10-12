@@ -16,7 +16,7 @@ Feature: Book index store page
     Then the books are re-sorted based on the amount of times they are purchased
 
   Scenario: Book searching
-    Given there are 100 books in the database
+    Given there are 10 books in the database
     And I am logged into the site
     When I visit the root url
     And I enter a book's title into the book search field

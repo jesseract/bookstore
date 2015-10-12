@@ -32,9 +32,12 @@ Then(/^the books are re\-sorted based on the amount of times they are purchased$
 end
 
 When(/^I enter a book's title into the book search field$/) do
-  pending # express the regexp above with the code you wish you had
+  @sample_book = create(:book, title: "Are you working?")
+  fill_in('search', with: 'Are you working?')
+  click_button("Search")
 end
 
+
 Then(/^I am shown a list of books with that title$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content(@sample_book.title)
 end
