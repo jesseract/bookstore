@@ -1,5 +1,5 @@
 Given(/^there are some books in the database$/) do
-  pending # express the regexp above with the code you wish you had
+  100.times { create(:book) } 
 end
 
 When(/^I click on a book$/) do

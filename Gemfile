@@ -8,6 +8,7 @@ gem 'devise'
 gem 'kaminari'
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'money-rails'
+gem 'stripe'
 
 # Assets
 gem 'coffee-rails', '~> 4.1.0'
