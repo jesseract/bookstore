@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'money-rails'
+gem 'stripe'
 
 group :development, :test do
   gem 'pry-byebug'
