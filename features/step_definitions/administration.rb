@@ -43,8 +43,8 @@ When(/^I enter the title "(.*?)"$/) do |title|
   fill_in :book_title, with: title 
 end
 
-When(/^I enter the price "(.*?)"$/) do |price_cents|
-  fill_in :book_price_cents, with: price_cents * 100
+When(/^I enter the price "(.*?)"$/) do |price|
+  fill_in :book_price, with: price
 end
 
 When(/^I enter the published date "(.*?)"$/) do |date|
@@ -75,8 +75,8 @@ Given(/^there is a book named "(.*?)"$/) do |title|
   @book = Book.create(title: title ) 
 end
 
-Given(/^the price of the book is "(.*?)"$/) do |price_cents|
-  @book.price_cents = price_cents 
+Given(/^the price of the book is "(.*?)"$/) do |price|
+  @book.price = price 
 end
 
 When(/^I delete the Book with the Title "(.*?)"$/) do |title|
@@ -105,6 +105,6 @@ When(/^I change the book name to "(.*?)"$/) do |title|
   fill_in "Title", with: title 
 end
 
-When(/^I change the book price to "(.*?)"$/) do |price_cents|
-  fill_in "Price cents", with: price_cents 
+When(/^I change the book price to "(.*?)"$/) do |price|
+  fill_in "Price cents", with: price 
 end
