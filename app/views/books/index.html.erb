@@ -1,4 +1,3 @@
-<%= link_to "Add to Cart", book_path %>
 <p>
   <%= form_tag books_path, method: :get, class: 'form-inline' do %>
     <div class='form-group'>
@@ -24,6 +23,7 @@
       <td><%= book.published_date %></td>
       <td><%= book.price.format %></td>
       <td><%= book.times_purchased %></td>
+      <td><%= link_to "Add to Cart", book_path(book) %></td>
     </tr>
     <% end %>
 </table>
