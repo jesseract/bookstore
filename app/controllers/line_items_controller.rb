@@ -4,13 +4,12 @@ class LineItemsController < InheritedResources::Base
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   def create
-    @cart = current_cart
     book = Book.find(params[:line_item] [:book_id])
     @line_item = @cart.line_items.build(book: book)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @line_item.cart, notice: "Line item was successfully created." }
       else
         format.html {render action: 'new' }
       end
