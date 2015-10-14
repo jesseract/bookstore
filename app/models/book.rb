@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   has_many :line_items
+
   monetize :price_cents
   before_destroy :ensure_not_referenced_by_any_line_item
 
@@ -11,7 +12,6 @@ class Book < ActiveRecord::Base
   end
  
 
-
   private
   #ensure that there are no line items referencing this product
   def ensure_not_referenced_by_any_line_item
@@ -22,5 +22,4 @@ class Book < ActiveRecord::Base
       return false
     end
   end
-
 end

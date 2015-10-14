@@ -14,7 +14,6 @@
 
 ActiveRecord::Schema.define(version: 20151013175641) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +59,7 @@ ActiveRecord::Schema.define(version: 20151013175641) do
     t.string   "category"
     t.integer  "price_cents",     default: 0, null: false
     t.integer  "times_purchased"
+<<<<<<< HEAD
   end
 
   create_table "carts", force: :cascade do |t|
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 20151013175641) do
     t.datetime "updated_at", null: false
   end
 
+=======
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+>>>>>>> e51a377a46fbb8cce6e042444c641dd6e4ec9adf
   create_table "line_items", force: :cascade do |t|
     t.integer  "book_id"
     t.integer  "cart_id"

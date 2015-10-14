@@ -17,7 +17,6 @@ class LineItemsController < InheritedResources::Base
     end
   end
 
-
   private
 
     def line_item_params
