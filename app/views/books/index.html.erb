@@ -23,6 +23,7 @@
       <td><%= book.published_date %></td>
       <td><%= book.price.format %></td>
       <td><%= book.times_purchased %></td>
+      <td><%= button_to 'Add to cart', carts_path %></td>
     </tr>
     <% end %>
 </table>

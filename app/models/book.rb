@@ -5,6 +5,10 @@ class Book < ActiveRecord::Base
 
 
   scope :filter, -> (search) { where("title LIKE ?", "%#{search}%") } 
+
+  def add_book
+    line_item = LineItem.new
+  end
  
 
 

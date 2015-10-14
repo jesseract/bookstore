@@ -7,6 +7,11 @@ class BooksController < ApplicationController
       .order(sort)
       .page(params[:page])
   end
+  
+  def show
+    @book = Book.find(params[:id])
+  end
+
 end
 
 
