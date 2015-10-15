@@ -5,11 +5,11 @@ class LineItemsController < InheritedResources::Base
 
   def create
     book = Book.find(params[:line_item] [:book_id])
-    @line_item = @cart.line_items.build(book: book)
+    @line_item = @cart.add_book(book.id)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: "Line item was successfully created." }
+        format.html { redirect_to @line_item.cart }
       else
         format.html {render action: 'new' }
       end
