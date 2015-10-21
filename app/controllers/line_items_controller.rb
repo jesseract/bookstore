@@ -6,7 +6,11 @@ class LineItemsController < ApplicationController
 
   def create
     book = Book.find(params[:line_item][:book_id])
-    @line_item = @cart.add_book(book)
+    quantity = params[:line_item][:quantity].to_i
+    if quantity <= 0
+      quantity = 1
+    end 
+    @line_item = @cart.add_book(book, quantity)
 
     respond_to do |format|
       if @line_item.save
@@ -30,7 +34,7 @@ class LineItemsController < ApplicationController
   end
 
     def line_item_params
-      params.require(:line_item).permit(:book_id, :cart_id)
+      params.require(:line_item).permit(:book_id, :cart_id, :quantity)
     end
 end
 

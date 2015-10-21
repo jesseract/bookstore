@@ -1,8 +1,8 @@
 <h2><%= @book.title %></h2>
 <p>Author: <%= @book.author %></p>
 <div style="width:10%">
-  <%= form_for LineItem.new, method: :post do |f| %>
-    Quantity: <%= f.text_field :quantity, value: 1 %>
+  <%= form_for :line_item, url: line_items_path do |f| %>
+    Quantity: <%= f.text_field :quantity %>
     <%= f.hidden_field :book_id, value: @book.id %>
     <%= f.submit "Add to Cart" %>
   <% end %>

@@ -24,7 +24,7 @@ class CartsController < InheritedResources::Base
   private
 
     def cart_params
-      params.require(:cart).permit(:book_id, :user_id, :cart_id)
+      params.require(:cart).permit(:book_id, :user_id, :cart_id, :quantity)
     end
 end
 

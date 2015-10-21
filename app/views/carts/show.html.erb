@@ -8,6 +8,7 @@
     <tr>
       <td><%= item.quantity %> &times;</td>
       <td><%= item.book.title %></td>
+      <td><%= item.book.price %></td>
       <td class="item_price"><%= number_to_currency(item.total_price) %></td>
     </tr>
   <% end %>

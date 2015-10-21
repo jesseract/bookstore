@@ -16,6 +16,12 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
+  private
+
+  def book_params
+      params.require(:book).permit(:id, :quantity)
+    end
+
 end
 
 
