@@ -4,7 +4,7 @@ class Cart < ActiveRecord::Base
 
   def add_book(book, quantity)
     current_item = line_items.find_by_book_id(book.id)
-    if current_item
+    if current_item && quantity > 0
       current_item.quantity += quantity
     else
       current_item = line_items.build(book_id: book.id, quantity: quantity)

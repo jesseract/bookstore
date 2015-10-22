@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
+  include CurrentCart
+
   before_filter :authenticate_user!
+  before_action :set_cart
 
   def index
     sort = params[:sort] || "published_date desc"
