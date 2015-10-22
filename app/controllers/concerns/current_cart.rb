@@ -10,4 +10,5 @@ module CurrentCart
       session[:cart_id] = @cart.id
     end
   end
+  helper_method :current_cart
 end

@@ -5,7 +5,7 @@ class Book < ActiveRecord::Base
   before_destroy :ensure_not_referenced_by_any_line_item
 
 
-  scope :filter, -> (search) { where("title LIKE ?", "%#{search}%") } 
+  scope :filter, -> (search) { where("title ILIKE ?", "%#{search}%") } 
 
   def add_book
     line_item = LineItem.new

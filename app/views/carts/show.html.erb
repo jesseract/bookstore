@@ -3,7 +3,14 @@
 <%# <% end %>
 
 <h2>Your cart</h2>
-<table>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Title</th>
+      <th>Unit Price</th>
+      <th>Total Price</th>
+    </tr>
   <% @cart.line_items.each do |item| %>
     <tr>
       <td><%= item.quantity %> &times;</td>
@@ -14,7 +21,7 @@
   <% end %>
 
   <tr class="total_line">
-    <td colspan="2">Total</td>
+    <td colspan="3">Total</td>
     <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
   </tr>
 </table>
