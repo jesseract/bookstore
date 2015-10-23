@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015160124) do
+ActiveRecord::Schema.define(version: 20151023145855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20151015160124) do
     t.string   "category"
     t.integer  "price_cents",     default: 0, null: false
     t.integer  "times_purchased"
+    t.text     "description"
   end
 
   create_table "carts", force: :cascade do |t|

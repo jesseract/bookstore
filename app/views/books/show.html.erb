@@ -1,5 +1,6 @@
 <h2><%= @book.title %></h2>
 <p>Author: <%= @book.author %></p>
+<p>Description: <%= @book.description %></p>
 <div style="width:10%">
   <%= form_for :line_item, url: line_items_path do |f| %>
     Quantity: <%= f.text_field :quantity %>

@@ -4,6 +4,7 @@
     author: Faker::Name.name,
     published_date: Time.zone.today,
     price: Money.new([2500, 1900, 2300, 1000, 750].sample),
+    description: Faker::Lorem.paragraph,
   )
 end
 

@@ -5,9 +5,9 @@ class CartsController < InheritedResources::Base
     @cart = Cart.find(params[:id])
     respond_to do |format|
       if @cart.id == session[:cart_id] && @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        redirect_to @cart, notice: 'Cart was successfully updated.' 
       else
-        format.html { render :edit }
+        render :edit 
       end
     end
   end
@@ -17,7 +17,7 @@ class CartsController < InheritedResources::Base
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to books_path, notice: 'Your cart is currently empty' }
+      redirect_to books_path, notice: 'Your cart is currently empty'
     end
   end
 
