@@ -1,0 +1,9 @@
+Dear <%= @order.name %>
+
+Thank you for your recent order from Jessa's Bookstore. We just wanted to let you know that we've shipped your recent order. 
+
+You ordered the following items: 
+
+<%= render @order.line_items -%>
+
+
