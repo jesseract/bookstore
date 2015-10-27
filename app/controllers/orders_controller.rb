@@ -32,7 +32,8 @@ class OrdersController < ApplicationController
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
-      if @order.save
+      if @order.save_with_payment
+        redirect_to @order, notice: "Thank you for your order!"
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderNotifier.received(@order).deliver       
