@@ -3,42 +3,59 @@ Given(/^there are some books in the database$/) do
 end
 
 When(/^I click on a book$/) do
-  first(".book.title").click_link("Title") 
+  click_link(Book.first.title) 
+end
+
+When(/^I enter (\d+) for the quantity$/) do |arg1|
+  fill_in('line_item_quantity', :with => '1')
 end
 
 Then(/^the book is added to my cart$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content(Book.first.title) 
 end
 
 When(/^I visit my cart$/) do
-  visit('/cart') 
+  visit('/books') 
+  click_link("Your cart")
 end
 
 Then(/^I see the book in my cart$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content(Book.first.title) 
 end
 
-Then(/^I am asked for my shipping address$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I enter my shipping address$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I am asked for my name$/) do
+  fill_in('order_name', :with => 'Jessa Test') 
 end
 
 Then(/^I am asked for my billing address$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content('Billing address') 
 end
 
 When(/^I enter my billing address$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in('order_billing_address', :with => '123 Test St.')  
+end
+
+Then(/^I am asked for my shipping address$/) do
+  expect(page).to have_content('Shipping address') 
+end
+
+When(/^I enter my shipping address$/) do
+  fill_in('order_shipping_address', :with => '123 Test St.') 
 end
 
 Then(/^I am asked for my credit card$/) do
-  pending # express the regexp above with the code you wish you had
+  select('Visa', :from => 'order_pay_type')
 end
 
 When(/^I enter my credit card$/) do
+  fill_in('card_number', :with => '4242424242424242') 
+end
+
+When(/^I enter my security code$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I enter the expiration date$/) do
   pending # express the regexp above with the code you wish you had
 end
 
@@ -58,9 +75,9 @@ Then(/^I am emailed an order invoice containing the books details, quantity, sub
   pending # express the regexp above with the code you wish you had
 end
 
-When(/^I enter (\d+) for the quantity$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
+# When(/^I enter (\d+) for the quantity$/) do |arg1|
+#   pending # express the regexp above with the code you wish you had
+# end
 
 Then(/^the book is added to my cart with quantity (\d+)$/) do |arg1|
   pending # express the regexp above with the code you wish you had
