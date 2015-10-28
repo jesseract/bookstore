@@ -16,8 +16,8 @@ jQuery ->
     card =
       number: $('#card_number').val()
       cvc: $('#card_code').val()
-      expMonth: $('#card_month').val()
-      expYear: $('#card_year').val()
+      exp_month: $('#card_month').val()
+      exp_year: $('#card_year').val()
     Stripe.createToken(card, order.handleStripeResponse)
 
   handleStripeResponse: (status, response) ->

@@ -32,14 +32,15 @@ class OrdersController < ApplicationController
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
-      if @order.save_with_payment
-        redirect_to @order, notice: "Thank you for your order!"
-        Cart.destroy(session[:cart_id])
-        session[:cart_id] = nil
-        OrderNotifier.received(@order).deliver       
-        format.html { redirect_to books_url, notice: 'Thank you for your order.' }
-      else
-        render action: 'new'
+      format.html do 
+        if @order.save_with_payment
+          Cart.destroy(session[:cart_id])
+          session[:cart_id] = nil
+          OrderNotifier.received(@order).deliver       
+          redirect_to @order, notice: 'Thank you for your order.'
+        else
+          render action: 'new'
+        end
       end
     end
   end
@@ -71,7 +72,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
+      params.require(:order).permit(:name, :address, :email, :pay_type, :stripe_card_token)
     end
 end
 
