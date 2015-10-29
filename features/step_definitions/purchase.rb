@@ -52,11 +52,12 @@ When(/^I enter my credit card$/) do
 end
 
 When(/^I enter my security code$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in('card_code', :with => '123') 
 end
 
 When(/^I enter the expiration date$/) do
-  pending # express the regexp above with the code you wish you had
+  select('1 - January', :from => 'card_month')
+  select('2016', :from => 'card_year') 
 end
 
 Then(/^I am asked to review the order total$/) do
@@ -74,10 +75,6 @@ end
 Then(/^I am emailed an order invoice containing the books details, quantity, subtotal, and order total$/) do
   pending # express the regexp above with the code you wish you had
 end
-
-# When(/^I enter (\d+) for the quantity$/) do |arg1|
-#   pending # express the regexp above with the code you wish you had
-# end
 
 Then(/^the book is added to my cart with quantity (\d+)$/) do |arg1|
   pending # express the regexp above with the code you wish you had

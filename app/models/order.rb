@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   PAYMENT_TYPES = [ "Visa", "MasterCard", "American Express" ] 
-  validates :name, :address, :email, presence: true
+  validates :name, :shipping_address, :billing_address, :email, presence: true
   validates :pay_type, inclusion: PAYMENT_TYPES
   attr_accessor :stripe_card_token
 
@@ -10,12 +10,13 @@ class Order < ActiveRecord::Base
       item.cart_id = nil
       line_items << item
     end
+    self.total = cart.total_price
   end
 
   def save_with_payment
     if valid?
       charge = Stripe::Charge.create(
-        :amount => 1000,
+        :amount => total,
         :currency => "usd",
         :source => stripe_customer_token,
         :description => "Book order"
