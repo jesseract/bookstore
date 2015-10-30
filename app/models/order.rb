@@ -18,10 +18,10 @@ class Order < ActiveRecord::Base
       charge = Stripe::Charge.create(
         :amount => total,
         :currency => "usd",
-        :source => stripe_customer_token,
+        :source => stripe_card_token,
         :description => "Book order"
       )
-      self.stripe_token = charge.id
+      stripe_token = charge.id
       save!
     end
   rescue Stripe::InvalidRequestError => e

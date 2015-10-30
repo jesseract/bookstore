@@ -4,7 +4,7 @@ jQuery ->
   
  order =
   placeOrderForm: ->
-    $('#payment_form').submit ->
+    $('#new_order').submit ->
       $('input[type=submit]').attr('disabled', true)
       if $('#card_number').length
         order.processCard()
