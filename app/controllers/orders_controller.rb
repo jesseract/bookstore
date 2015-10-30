@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1
   def show
+
   end
 
   # GET /orders/new

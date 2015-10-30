@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
       item.cart_id = nil
       line_items << item
     end
-    self.total = cart.total_price
+    self.total = cart.total_price.cents
   end
 
   def save_with_payment
