@@ -73,7 +73,7 @@ Then(/^my credit card is saved for future purchases$/) do
 end
 
 Then(/^I am emailed an order invoice containing the books details, quantity, subtotal, and order total$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(ActionMailer::Base.deliveries.count).to eq 1 
 end
 
 Then(/^the book is added to my cart with quantity (\d+)$/) do |arg1|

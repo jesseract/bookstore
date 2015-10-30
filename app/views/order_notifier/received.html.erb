@@ -1,5 +1,22 @@
-<h1>OrderNotifier#received</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv='Content-Type'/>
+  </head>
+  <body>
+<h1>Speak Friend and Enter Order Bookstore Received</h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/order_notifier/received.html.erb
+Thank you for your recent order from the Speak Friend and Enter Bookstore, <%= @user.name %>!</h1>. 
+
+You ordered the following items: 
+
+<table>
+  <tr><th colspan="2">Qty</th><th>Description</th></tr>
+  <%= render @order.line_items -%>
+</table>
+
+We'll send you a separate email when your order ships.
+
 </p>
+
