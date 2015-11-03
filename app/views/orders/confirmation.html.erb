@@ -1,0 +1,27 @@
+<h1>Order Confirmation</h1>
+<p>Please review your order below. If everything looks good, please click Confirm to place your order. Thanks!</p>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Total Price</th>
+      <th>Quantity</th>
+      <th>Order Total</th>
+    </tr>
+  </thead>
+  <% @order.line_items.each do |line_item| %>
+    <tr>
+      <td><%= line_item.book.title %></td>
+      <td><%= line_item.total_price %></td>
+      <td><%= line_item.quantity %></td>
+  </tr>
+  <% end %>
+
+   <tr class="total_line">
+    <td colspan="3">Total</td>
+    <td class="total_cell"><%= @cart.total_price %></td>
+  </tr>
+
+</tbody>
+</table>
+<%= button_to 'Confirm', confirm_order_order_path(@order), :method => :post %>
