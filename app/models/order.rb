@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
+  belongs_to :user
   PAYMENT_TYPES = [ "Visa", "MasterCard", "American Express" ] 
   validates :name, :shipping_address, :billing_address, :email, presence: true
   validates :pay_type, inclusion: PAYMENT_TYPES

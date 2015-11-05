@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_access_to_order, only: [:show]
 
   # GET /orders
   def index
@@ -28,15 +29,12 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-    @order = Order.create(params[:id])
+    @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
-
-    respond_to do |format|
-      format.html do 
-          render :confirmation
-        end
-      end
-    end
+    @order.user = current_user
+    @order.save
+    redirect_to @order
+  end
 
   def confirm_order
     if @order.save_with_payment
@@ -77,6 +75,12 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:name, :billing_address, :shipping_address,
                                     :email, :pay_type, :stripe_card_token)
+    end
+
+    def authorize_access_to_order
+      if @order.user != current_user
+        redirect_to root_path  
+      end
     end
 end
 
