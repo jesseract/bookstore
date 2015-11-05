@@ -18,7 +18,6 @@ class OrdersController < ApplicationController
   def new
     if @cart.line_items.empty?
       redirect_to store_url, notice: "Your cart is empty"
-      return
     end
     @order = Order.new
   end
@@ -29,20 +28,24 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-    @order = Order.new(order_params)
+    @order = Order.create(params[:id])
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
       format.html do 
-        if @order.save_with_payment
-          Cart.destroy(session[:cart_id])
-          session[:cart_id] = nil
-          OrderNotifier.received(@order).deliver       
-          redirect_to @order, notice: 'Thank you for your order.'
-        else
-          render action: 'new'
+          render :confirmation
         end
       end
+    end
+
+  def confirm_order
+    if @order.save_with_payment
+      Cart.destroy(session[:cart_id])
+      session[:cart_id] = nil 
+      OrderNotifier.received(@order).deliver       
+      redirect_to @order, notice: "Thank you for your order!"
+    else
+      redirect_to @order, alert: "There was an error with placing your order: #{@order.errors.full_messages.to_sentence}"
     end
   end
 
@@ -66,12 +69,11 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_order
       @order = Order.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:name, :billing_address, :shipping_address,
                                     :email, :pay_type, :stripe_card_token)
