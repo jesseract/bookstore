@@ -18,6 +18,8 @@ jQuery ->
       cvc: $('#card_code').val()
       exp_month: $('#card_month').val()
       exp_year: $('#card_year').val()
+    last_four = card.number.substr(card.number.length - 4)
+    $('#last_four').val(last_four)
     Stripe.createToken(card, order.handleStripeResponse)
 
   handleStripeResponse: (status, response) ->

@@ -5,23 +5,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
   has_many :orders
-  attr_accessor :stripe_card_token
+
+  before_create :save_to_stripe
 
   def cart
     orders.where(stripe_token: nil).first_or_create
   end
 
-  def save_card
+  def save_to_stripe
     if valid?
-      customer = Stripe::Customer.create(
-        :email => 'example@stripe.com',
-        :card => params[:stripeToken]
-      )
+      customer = Stripe::Customer.create(email:  email)
       self.stripe_customer_token = customer.id
-      save!
     end
-  rescue Stripe::InvalidRequestError => e
-    flash[:error] = e.message
-    redirect_to charges_path
   end
 end

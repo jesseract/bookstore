@@ -14,7 +14,7 @@ class Order < ActiveRecord::Base
     self.total = cart.total_price.cents
   end
 
-  def save_with_payment
+  def save_with_payment(stripe_card_token)
     if valid?
       charge = Stripe::Charge.create(
         :amount => total,

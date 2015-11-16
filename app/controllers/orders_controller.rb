@@ -33,6 +33,10 @@ class OrdersController < ApplicationController
     @order.add_line_items_from_cart(@cart)
     @order.user = current_user
     @order.save
+
+    CreditCard.create(card_params)
+
+
     redirect_to @order
   end
 

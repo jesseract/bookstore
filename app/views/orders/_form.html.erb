@@ -38,6 +38,7 @@
  <div class="field">
     <%= label_tag :card_number, "Credit Card Number" %><br>
     <%= text_field_tag :card_number, nil, name: nil %>
+    <input type='hidden' id='last_four' name='order[last_four]'/>
   </div>
  <div class="field">
     <%= label_tag :card_code, "Security Code on Card (CVV)" %><br>
